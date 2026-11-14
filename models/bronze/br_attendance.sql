@@ -2,7 +2,7 @@
 with source_attendance as (
     select * from {{ source('crm_raw', 'attendance') }}
 ),
-cleaned_attendance (
+cleaned_attendance as (
 select
     upper(trim(attendance_id)) as attendance_id,
     employee_id::number(38,0) as employee_id,
