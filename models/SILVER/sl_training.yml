@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: sl_training
+    description: "Incremental employee training outcomes"
+    columns:
+      - name: training_id
+        description: "Training business key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: employee_id
+        description: "Trained employee"
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('sl_employees')
+                field: employee_id
+
+      - name: course_name
+        description: "Training course title"
+
+      - name: training_date
+        description: "Training event date"
+
+      - name: completion_status
+        description: "Current training status"
+
+      - name: score
+        description: "Assessment score"
+
+      - name: completion_flag
+        description: "1 if completed, otherwise 0"
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+                quote: false
+
+      - name: updated_at
+        description: "Last training update"
+
+      - name: row_hash
+        description: "Training attribute hash"
+        data_tests:
+          - not_null

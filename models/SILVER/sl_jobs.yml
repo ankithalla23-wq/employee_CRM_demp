@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: sl_jobs
+    description: "Incremental job catalog with salary bands"
+    columns:
+      - name: job_id
+        description: "Job business key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: job_title
+        description: "Current job title"
+        data_tests:
+          - not_null
+
+      - name: job_grade
+        description: "Organizational job grade"
+
+      - name: min_salary
+        description: "Minimum pay band"
+
+      - name: max_salary
+        description: "Maximum pay band"
+
+      - name: salary_band_width
+        description: "Difference between maximum and minimum pay"
+
+      - name: updated_at
+        description: "Source update timestamp"
+
+      - name: row_hash
+        description: "Hash of job attributes"
+        data_tests:
+          - not_null

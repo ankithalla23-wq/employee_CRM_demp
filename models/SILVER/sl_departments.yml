@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: sl_departments
+    description: "Incremental department master"
+    columns:
+      - name: department_id
+        description: "Department business key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: department_name
+        description: "Current department name"
+        data_tests:
+          - not_null
+
+      - name: location
+        description: "Department office location"
+
+      - name: manager_employee_id
+        description: "Department manager employee key"
+        data_tests:
+          - not_null
+
+      - name: updated_at
+        description: "Last source update timestamp"
+
+      - name: row_hash
+        description: "Department attribute change hash"
+        data_tests:
+          - not_null

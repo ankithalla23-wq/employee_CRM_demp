@@ -1,0 +1,62 @@
+version: 2
+
+models:
+  - name: sl_employees
+    description: "Incremental employee master with change detection"
+    columns:
+      - name: employee_id
+        description: "Employee business key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: first_name
+        description: "Employee first name"
+
+      - name: last_name
+        description: "Employee surname"
+
+      - name: full_name
+        description: "Derived full employee name"
+        data_tests:
+          - not_null
+
+      - name: email
+        description: "Employee email address"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: department_id
+        description: "Department foreign business key"
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('sl_departments')
+                field: department_id
+
+      - name: job_id
+        description: "Job foreign business key"
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('sl_jobs')
+                field: job_id
+
+      - name: hire_date
+        description: "Employee hire date"
+
+      - name: employment_status
+        description: "Employee lifecycle status"
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['ACTIVE', 'INACTIVE', 'TERMINATED']
+
+      - name: updated_at
+        description: "Latest source update timestamp"
+
+      - name: row_hash
+        description: "Hash of employee business attributes"
+        data_tests:
+          - not_null

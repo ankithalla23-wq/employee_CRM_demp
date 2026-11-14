@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: sl_projects
+    description: "Incremental project master and duration"
+    columns:
+      - name: project_id
+        description: "Project business key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: project_name
+        description: "Project name"
+        data_tests:
+          - not_null
+
+      - name: client_name
+        description: "Client organization"
+
+      - name: start_date
+        description: "Project start date"
+
+      - name: end_date
+        description: "Project planned end date"
+
+      - name: budget
+        description: "Approved project budget"
+        data_tests:
+          - not_null
+
+      - name: project_status
+        description: "Current project lifecycle status"
+
+      - name: project_duration_days
+        description: "Planned calendar duration in days"
+
+      - name: updated_at
+        description: "Source update timestamp"
+
+      - name: row_hash
+        description: "Project change hash"
+        data_tests:
+          - not_null

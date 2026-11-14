@@ -1,0 +1,37 @@
+{{
+    config(
+        materialized='incremental',
+        incremental_strategy='merge',
+        unique_key='department_id'
+    )
+}}
+
+with prepared as (
+
+    select
+        department_id,
+        department_name,
+        location,
+        manager_employee_id,
+        updated_at
+    from {{ ref('br_departments') }}
+
+),
+
+hashed as (
+
+    select
+        *,
+        {{ row_signature([
+            'department_name',
+            'location',
+            'manager_employee_id'
+        ]) }} as row_hash
+    from prepared
+
+)
+
+select src.*
+from hashed src
+
+{{ incremental_changed('department_id') }}

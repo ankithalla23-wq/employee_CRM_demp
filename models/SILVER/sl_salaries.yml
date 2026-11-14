@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: sl_salaries
+    description: "Incremental employee salary records"
+    columns:
+      - name: salary_id
+        description: "Salary business key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: employee_id
+        description: "Employee receiving compensation"
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('sl_employees')
+                field: employee_id
+
+      - name: effective_date
+        description: "Salary effective date"
+
+      - name: base_salary
+        description: "Base salary amount"
+        data_tests:
+          - not_null
+
+      - name: bonus
+        description: "Employee bonus amount"
+
+      - name: total_compensation
+        description: "Base salary plus bonus"
+        data_tests:
+          - not_null
+
+      - name: currency
+        description: "Compensation currency"
+
+      - name: updated_at
+        description: "Source modification timestamp"
+
+      - name: row_hash
+        description: "Salary attribute hash"
+        data_tests:
+          - not_null
