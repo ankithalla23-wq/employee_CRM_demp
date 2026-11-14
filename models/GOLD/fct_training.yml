@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: fct_training
+    description: "Employee training completion fact"
+    columns:
+      - name: training_id
+        description: "Training record business key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: employee_id
+        description: "Employee business key"
+
+      - name: employee_key
+        description: "Employee dimension surrogate key"
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_employee')
+                field: employee_key
+
+      - name: course_name
+        description: "Training course name"
+
+      - name: training_date
+        description: "Training event date"
+
+      - name: completion_status
+        description: "Training completion state"
+
+      - name: score
+        description: "Training assessment score"
+
+      - name: completion_flag
+        description: "1 if training completed"
+
+      - name: certification_eligible_flag
+        description: "1 if completed with score at least 80"
+
+      - name: updated_at
+        description: "Last source modification"
+
+      - name: row_hash
+        description: "Training fact change hash"
+        data_tests:
+          - not_null

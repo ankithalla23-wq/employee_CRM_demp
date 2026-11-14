@@ -1,0 +1,62 @@
+version: 2
+
+models:
+  - name: dim_employee
+    description: "Current-state employee dimension enriched with job and department"
+    columns:
+      - name: employee_key
+        description: "Deterministic employee surrogate key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: employee_id
+        description: "Employee business key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: full_name
+        description: "Employee full name"
+
+      - name: email
+        description: "Employee email address"
+
+      - name: department_id
+        description: "Department business key"
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_department')
+                field: department_id
+
+      - name: department_name
+        description: "Current department display name"
+
+      - name: job_id
+        description: "Job business key"
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_job')
+                field: job_id
+
+      - name: job_title
+        description: "Current employee job title"
+
+      - name: job_grade
+        description: "Current job grade"
+
+      - name: hire_date
+        description: "Employee hire date"
+
+      - name: employment_status
+        description: "Current employment status"
+
+      - name: updated_at
+        description: "Employee source modification timestamp"
+
+      - name: row_hash
+        description: "Hash of complete dimensional attributes"
+        data_tests:
+          - not_null

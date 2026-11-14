@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: fct_leave
+    description: "Leave request fact with approved duration"
+    columns:
+      - name: leave_id
+        description: "Leave request business key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: employee_id
+        description: "Employee business key"
+
+      - name: employee_key
+        description: "Employee dimension surrogate key"
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_employee')
+                field: employee_key
+
+      - name: leave_type
+        description: "Leave category"
+
+      - name: start_date
+        description: "Leave start date"
+
+      - name: end_date
+        description: "Leave end date"
+
+      - name: approval_status
+        description: "Approval decision"
+
+      - name: leave_days
+        description: "Requested calendar leave days"
+
+      - name: approved_leave_days
+        description: "Approved calendar leave days"
+
+      - name: updated_at
+        description: "Last source update"
+
+      - name: row_hash
+        description: "Leave fact change hash"
+        data_tests:
+          - not_null

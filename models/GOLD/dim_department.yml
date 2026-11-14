@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: dim_department
+    description: "Current-state department dimension"
+    columns:
+      - name: department_key
+        description: "Department surrogate key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: department_id
+        description: "Department business key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: department_name
+        description: "Department display name"
+        data_tests:
+          - not_null
+
+      - name: location
+        description: "Department office location"
+
+      - name: manager_employee_id
+        description: "Manager employee identifier"
+
+      - name: updated_at
+        description: "Source modification timestamp"
+
+      - name: row_hash
+        description: "Department dimension change hash"
+        data_tests:
+          - not_null

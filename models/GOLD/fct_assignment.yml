@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: fct_assignment
+    description: "Employee-project allocation fact"
+    columns:
+      - name: assignment_id
+        description: "Assignment business key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: employee_id
+        description: "Employee business key"
+
+      - name: employee_key
+        description: "Employee dimension surrogate key"
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_employee')
+                field: employee_key
+
+      - name: project_id
+        description: "Project business key"
+
+      - name: project_key
+        description: "Project dimension surrogate key"
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_project')
+                field: project_key
+
+      - name: allocation_pct
+        description: "Employee allocation percentage"
+
+      - name: allocation_fraction
+        description: "Allocation as decimal fraction"
+
+      - name: assignment_start_date
+        description: "Assignment start date"
+
+      - name: assignment_end_date
+        description: "Assignment end date"
+
+      - name: assignment_days
+        description: "Assignment calendar duration"
+
+      - name: updated_at
+        description: "Source update timestamp"
+
+      - name: row_hash
+        description: "Assignment fact change hash"
+        data_tests:
+          - not_null
