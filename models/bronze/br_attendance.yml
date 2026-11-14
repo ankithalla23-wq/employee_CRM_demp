@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: br_attendance
+    description: "Cleaned daily employee attendance"
+    columns:
+      - name: attendance_id
+        description: "Unique attendance event"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: employee_id
+        description: "Employee identifier"
+        data_tests:
+          - not_null
+
+      - name: attendance_date
+        description: "Attendance business date"
+        data_tests:
+          - not_null
+
+      - name: check_in
+        description: "Employee check-in time"
+
+      - name: check_out
+        description: "Employee check-out time"
+
+      - name: attendance_status
+        description: "Attendance classification"
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['PRESENT', 'ABSENT', 'LEAVE']
+
+      - name: updated_at
+        description: "Attendance source update timestamp"
+        data_tests:
+          - not_null

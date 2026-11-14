@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: br_employees
+    description: "Cleaned employee master data"
+    columns:
+      - name: employee_id
+        description: "Unique employee identifier"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: first_name
+        description: "Standardized employee first name"
+        data_tests:
+          - not_null
+
+      - name: last_name
+        description: "Standardized employee surname"
+        data_tests:
+          - not_null
+
+      - name: email
+        description: "Lowercase employee email"
+        data_tests:
+          - not_null
+          - unique
+
+      - name: department_id
+        description: "Employee department business key"
+        data_tests:
+          - not_null
+
+      - name: job_id
+        description: "Employee job business key"
+        data_tests:
+          - not_null
+
+      - name: hire_date
+        description: "Date of employee joining"
+        data_tests:
+          - not_null
+
+      - name: employment_status
+        description: "Current employment status"
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['ACTIVE', 'INACTIVE', 'TERMINATED']
+
+      - name: updated_at
+        description: "Source modification timestamp"
+        data_tests:
+          - not_null

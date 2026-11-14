@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: br_jobs
+    description: "Standardized job and pay-band data"
+    columns:
+      - name: job_id
+        description: "Unique job identifier"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: job_title
+        description: "Job title"
+        data_tests:
+          - not_null
+
+      - name: job_grade
+        description: "Organizational grade"
+        data_tests:
+          - not_null
+
+      - name: min_salary
+        description: "Minimum salary for the job"
+        data_tests:
+          - not_null
+
+      - name: max_salary
+        description: "Maximum salary for the job"
+        data_tests:
+          - not_null
+
+      - name: updated_at
+        description: "Source update timestamp"
+        data_tests:
+          - not_null

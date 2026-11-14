@@ -1,0 +1,38 @@
+version: 2
+
+sources:
+  - name: crm_raw
+    database: EMPLOYE_CRM
+    schema: RAW
+    description: "Employee CRM source data"
+
+    tables:
+      - name: employees
+        identifier: EMPLOYEES
+
+      - name: departments
+        identifier: DEPARTMENTS
+
+      - name: jobs
+        identifier: JOBS
+
+      - name: salaries
+        identifier: SALARIES
+
+      - name: attendance
+        identifier: ATTENDANCE
+
+      - name: leaves
+        identifier: LEAVES
+
+      - name: performance
+        identifier: PERFORMANCE
+
+      - name: projects
+        identifier: PROJECTS
+
+      - name: assignments
+        identifier: ASSIGNMENTS
+
+      - name: training
+        identifier: TRAINING
