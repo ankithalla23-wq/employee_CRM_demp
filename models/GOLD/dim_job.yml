@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: dim_job
+    description: "Job dimension with compensation bands"
+    columns:
+      - name: job_key
+        description: "Job surrogate key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: job_id
+        description: "Job business key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: job_title
+        description: "Current job title"
+
+      - name: job_grade
+        description: "Job grade"
+
+      - name: min_salary
+        description: "Minimum salary"
+
+      - name: max_salary
+        description: "Maximum salary"
+
+      - name: salary_band_width
+        description: "Maximum minus minimum salary"
+
+      - name: updated_at
+        description: "Last source update"
+
+      - name: row_hash
+        description: "Job dimension change hash"
+        data_tests:
+          - not_null

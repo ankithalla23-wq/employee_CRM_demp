@@ -1,0 +1,53 @@
+version: 2
+
+models:
+  - name: fct_attendance
+    description: "Employee attendance event fact"
+    columns:
+      - name: attendance_id
+        description: "Attendance event business key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: employee_id
+        description: "Employee business key"
+
+      - name: employee_key
+        description: "Employee dimension surrogate key"
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_employee')
+                field: employee_key
+
+      - name: attendance_date
+        description: "Attendance date"
+
+      - name: attendance_status
+        description: "Attendance classification"
+
+      - name: check_in
+        description: "Recorded check-in time"
+
+      - name: check_out
+        description: "Recorded check-out time"
+
+      - name: working_hours
+        description: "Hours worked"
+
+      - name: present_flag
+        description: "1 when present, otherwise 0"
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1]
+                quote: false
+
+      - name: updated_at
+        description: "Source update timestamp"
+
+      - name: row_hash
+        description: "Attendance fact change hash"
+        data_tests:
+          - not_null

@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: fct_salary
+    description: "Employee salary fact at salary-record grain"
+    columns:
+      - name: salary_id
+        description: "Salary record business key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: employee_id
+        description: "Employee business key"
+
+      - name: employee_key
+        description: "Employee dimension surrogate key"
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_employee')
+                field: employee_key
+
+      - name: effective_date
+        description: "Salary effective date"
+
+      - name: base_salary
+        description: "Base compensation"
+
+      - name: bonus
+        description: "Bonus compensation"
+
+      - name: total_compensation
+        description: "Base salary plus bonus"
+
+      - name: currency
+        description: "Salary currency"
+
+      - name: updated_at
+        description: "Source update timestamp"
+
+      - name: row_hash
+        description: "Salary fact change hash"
+        data_tests:
+          - not_null

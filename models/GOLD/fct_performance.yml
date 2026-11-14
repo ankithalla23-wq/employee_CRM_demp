@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: fct_performance
+    description: "Performance review fact with rating indicators"
+    columns:
+      - name: review_id
+        description: "Performance review business key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: employee_id
+        description: "Reviewed employee business key"
+
+      - name: employee_key
+        description: "Employee dimension surrogate key"
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_employee')
+                field: employee_key
+
+      - name: review_date
+        description: "Performance review date"
+
+      - name: rating
+        description: "Performance score"
+
+      - name: reviewer_employee_id
+        description: "Reviewer employee business key"
+
+      - name: review_status
+        description: "Review lifecycle status"
+
+      - name: performance_category
+        description: "High, medium or low performance category"
+
+      - name: high_performer_flag
+        description: "1 for completed reviews rated at least 4"
+
+      - name: updated_at
+        description: "Last source update"
+
+      - name: row_hash
+        description: "Performance fact change hash"
+        data_tests:
+          - not_null
