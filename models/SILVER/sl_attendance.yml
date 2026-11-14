@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: sl_attendance
+    description: "Incremental attendance with working hours"
+    columns:
+      - name: attendance_id
+        description: "Attendance event business key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: employee_id
+        description: "Attending employee ID"
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('sl_employees')
+                field: employee_id
+
+      - name: attendance_date
+        description: "Attendance business date"
+        data_tests:
+          - not_null
+
+      - name: check_in
+        description: "Recorded check-in time"
+
+      - name: check_out
+        description: "Recorded check-out time"
+
+      - name: attendance_status
+        description: "Present, absent or leave classification"
+
+      - name: working_hours
+        description: "Calculated hours worked"
+        data_tests:
+          - not_null
+
+      - name: updated_at
+        description: "Source modification timestamp"
+
+      - name: row_hash
+        description: "Attendance change hash"
+        data_tests:
+          - not_null

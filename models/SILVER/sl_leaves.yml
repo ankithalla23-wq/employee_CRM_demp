@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: sl_leaves
+    description: "Incremental leave requests and duration"
+    columns:
+      - name: leave_id
+        description: "Leave request business key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: employee_id
+        description: "Employee requesting leave"
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('sl_employees')
+                field: employee_id
+
+      - name: leave_type
+        description: "Casual, sick or earned leave"
+
+      - name: start_date
+        description: "First leave date"
+        data_tests:
+          - not_null
+
+      - name: end_date
+        description: "Last leave date"
+        data_tests:
+          - not_null
+
+      - name: approval_status
+        description: "Approval decision"
+
+      - name: leave_days
+        description: "Inclusive calendar leave days"
+        data_tests:
+          - not_null
+
+      - name: updated_at
+        description: "Source modification timestamp"
+
+      - name: row_hash
+        description: "Leave business attribute hash"
+        data_tests:
+          - not_null

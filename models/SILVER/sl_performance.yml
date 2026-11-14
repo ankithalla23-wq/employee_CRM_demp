@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: sl_performance
+    description: "Incremental employee performance reviews"
+    columns:
+      - name: review_id
+        description: "Performance review business key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: employee_id
+        description: "Reviewed employee"
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('sl_employees')
+                field: employee_id
+
+      - name: review_date
+        description: "Date review was conducted"
+
+      - name: rating
+        description: "Performance rating from 1 to 5"
+
+      - name: reviewer_employee_id
+        description: "Employee who performed the review"
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('sl_employees')
+                field: employee_id
+
+      - name: review_status
+        description: "Review lifecycle status"
+
+      - name: performance_category
+        description: "Derived high, medium or low category"
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['HIGH', 'MEDIUM', 'LOW']
+
+      - name: updated_at
+        description: "Last source update"
+
+      - name: row_hash
+        description: "Review change detection hash"
+        data_tests:
+          - not_null

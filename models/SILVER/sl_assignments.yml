@@ -1,0 +1,47 @@
+version: 2
+
+models:
+  - name: sl_assignments
+    description: "Incremental employee-project assignments"
+    columns:
+      - name: assignment_id
+        description: "Assignment business key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: employee_id
+        description: "Assigned employee"
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('sl_employees')
+                field: employee_id
+
+      - name: project_id
+        description: "Assigned project"
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('sl_projects')
+                field: project_id
+
+      - name: allocation_pct
+        description: "Percentage allocation"
+
+      - name: allocation_fraction
+        description: "Allocation divided by 100"
+
+      - name: assignment_start_date
+        description: "Start of allocation"
+
+      - name: assignment_end_date
+        description: "End of allocation"
+
+      - name: updated_at
+        description: "Last assignment update"
+
+      - name: row_hash
+        description: "Assignment change hash"
+        data_tests:
+          - not_null
