@@ -1,0 +1,38 @@
+name: employee_crm_dbt
+version: '1.0.0'
+config-version: 2
+
+profile: employee_crm_dbt
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+snapshot-paths: ["snapshots"]
+macro-paths: ["macros"]
+test-paths: ["tests"]
+
+models:
+  employee_crm_dbt:
+    bronze:
+      +materialized: view
+      +schema: BRONZE
+
+    silver:
+      +materialized: incremental
+      +incremental_strategy: merge
+      +on_schema_change: sync_all_columns
+      +schema: SILVER
+
+    gold:
+      +materialized: incremental
+      +incremental_strategy: merge
+      +on_schema_change: sync_all_columns
+      +schema: GOLD
+
+seeds:
+  employee_crm_dbt:
+    +schema: RAW
+    +quote_columns: false
+
+snapshots:
+  employee_crm_dbt:
+    +target_schema: HISTORY

@@ -1,0 +1,11 @@
+employee_id,first_name,last_name,email,department_id,job_id,hire_date,employment_status,updated_at
+1,Ravi,Kumar,ravi@crm.com,D01,J01,2021-01-10,ACTIVE,2026-11-01 09:00:00
+2,Priya,Sharma,priya@crm.com,D02,J02,2020-03-15,ACTIVE,2026-11-01 09:00:00
+3,Arun,Reddy,arun@crm.com,D03,J03,2022-06-20,ACTIVE,2026-11-01 09:00:00
+4,Neha,Patel,neha@crm.com,D04,J04,2023-02-11,ACTIVE,2026-11-01 09:00:00
+5,Kiran,Rao,kiran@crm.com,D05,J05,2021-09-05,ACTIVE,2026-11-01 09:00:00
+6,Divya,Naidu,divya@crm.com,D01,J02,2024-01-12,ACTIVE,2026-11-01 09:00:00
+7,Suresh,Babu,suresh@crm.com,D02,J03,2022-04-18,ACTIVE,2026-11-01 09:00:00
+8,Anjali,Das,anjali@crm.com,D03,J04,2023-07-01,ACTIVE,2026-11-01 09:00:00
+9,Vikram,Singh,vikram@crm.com,D04,J05,2020-12-21,ACTIVE,2026-11-01 09:00:00
+10,Meena,Joshi,meena@crm.com,D05,J01,2024-05-10,ACTIVE,2026-11-01 09:00:00
