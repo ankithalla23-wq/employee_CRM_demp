@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: br_projects
+    description: "Cleaned CRM project master"
+    columns:
+      - name: project_id
+        description: "Unique project business key"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: project_name
+        description: "Project display name"
+        data_tests:
+          - not_null
+
+      - name: client_name
+        description: "Client associated with project"
+        data_tests:
+          - not_null
+
+      - name: start_date
+        description: "Project start date"
+        data_tests:
+          - not_null
+
+      - name: end_date
+        description: "Planned project end date"
+
+      - name: budget
+        description: "Approved project budget"
+        data_tests:
+          - not_null
+
+      - name: project_status
+        description: "Current project status"
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['ACTIVE', 'COMPLETED', 'ON_HOLD']
+
+      - name: updated_at
+        description: "Last source modification"
+        data_tests:
+          - not_null

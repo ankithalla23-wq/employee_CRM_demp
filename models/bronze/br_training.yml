@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: br_training
+    description: "Cleaned employee training records"
+    columns:
+      - name: training_id
+        description: "Unique training record identifier"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: employee_id
+        description: "Employee who attended training"
+        data_tests:
+          - not_null
+
+      - name: course_name
+        description: "Training course name"
+        data_tests:
+          - not_null
+
+      - name: training_date
+        description: "Training session date"
+        data_tests:
+          - not_null
+
+      - name: completion_status
+        description: "Training completion state"
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['COMPLETED', 'IN_PROGRESS', 'NOT_STARTED']
+
+      - name: score
+        description: "Training assessment score"
+
+      - name: updated_at
+        description: "Training source update timestamp"
+        data_tests:
+          - not_null
