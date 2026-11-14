@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: br_salaries
+    description: "Cleaned salary and compensation data"
+    columns:
+      - name: salary_id
+        description: "Unique salary record identifier"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: employee_id
+        description: "Employee receiving compensation"
+        data_tests:
+          - not_null
+
+      - name: effective_date
+        description: "Date salary becomes effective"
+        data_tests:
+          - not_null
+
+      - name: base_salary
+        description: "Base salary amount"
+        data_tests:
+          - not_null
+
+      - name: bonus
+        description: "Bonus amount"
+
+      - name: currency
+        description: "Compensation currency"
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['INR', 'USD', 'EUR']
+
+      - name: updated_at
+        description: "Last salary record update"
+        data_tests:
+          - not_null

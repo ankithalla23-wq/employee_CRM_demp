@@ -1,0 +1,11 @@
+department_id,department_name,location,manager_employee_id,updated_at
+D01,Engineering,Hyderabad,1,2026-11-01 09:00:00
+D02,Human Resources,Bangalore,2,2026-11-01 09:00:00
+D03,Finance,Chennai,3,2026-11-01 09:00:00
+D04,Sales,Mumbai,4,2026-11-01 09:00:00
+D05,Operations,Pune,5,2026-11-01 09:00:00
+D06,Marketing,Delhi,6,2026-11-01 09:00:00
+D07,Support,Hyderabad,7,2026-11-01 09:00:00
+D08,Analytics,Bangalore,8,2026-11-01 09:00:00
+D09,Compliance,Chennai,9,2026-11-01 09:00:00
+D10,Administration,Mumbai,10,2026-11-01 09:00:00
