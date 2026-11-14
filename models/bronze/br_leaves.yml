@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: br_leaves
+    description: "Cleaned employee leave requests"
+    columns:
+      - name: leave_id
+        description: "Unique leave request identifier"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: employee_id
+        description: "Employee requesting leave"
+        data_tests:
+          - not_null
+
+      - name: leave_type
+        description: "Leave category"
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['CASUAL', 'SICK', 'EARNED']
+
+      - name: start_date
+        description: "Leave start date"
+        data_tests:
+          - not_null
+
+      - name: end_date
+        description: "Leave end date"
+        data_tests:
+          - not_null
+
+      - name: approval_status
+        description: "Leave approval status"
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['APPROVED', 'PENDING', 'REJECTED']
+
+      - name: updated_at
+        description: "Last source update"
+        data_tests:
+          - not_null

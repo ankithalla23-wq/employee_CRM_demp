@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: br_assignments
+    description: "Cleaned employee project allocations"
+    columns:
+      - name: assignment_id
+        description: "Unique project assignment"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: employee_id
+        description: "Assigned employee ID"
+        data_tests:
+          - not_null
+
+      - name: project_id
+        description: "Assigned project ID"
+        data_tests:
+          - not_null
+
+      - name: allocation_pct
+        description: "Percentage of employee capacity allocated"
+        data_tests:
+          - not_null
+
+      - name: assignment_start_date
+        description: "Assignment effective start date"
+        data_tests:
+          - not_null
+
+      - name: assignment_end_date
+        description: "Assignment effective end date"
+
+      - name: updated_at
+        description: "Last assignment update"
+        data_tests:
+          - not_null

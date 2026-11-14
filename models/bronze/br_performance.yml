@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: br_performance
+    description: "Cleaned employee performance reviews"
+    columns:
+      - name: review_id
+        description: "Unique review identifier"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: employee_id
+        description: "Reviewed employee ID"
+        data_tests:
+          - not_null
+
+      - name: review_date
+        description: "Performance review date"
+        data_tests:
+          - not_null
+
+      - name: rating
+        description: "Performance score from 1 to 5"
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4, 5]
+                quote: false
+
+      - name: reviewer_employee_id
+        description: "Employee who conducted the review"
+        data_tests:
+          - not_null
+
+      - name: review_status
+        description: "Review completion status"
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['COMPLETED', 'PENDING']
+
+      - name: updated_at
+        description: "Review update timestamp"
+        data_tests:
+          - not_null
