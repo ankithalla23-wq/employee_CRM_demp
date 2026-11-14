@@ -1,0 +1,44 @@
+version: 2
+
+snapshots:
+  - name: snap_salaries
+    description: "SCD Type 2 history of salary record changes"
+    columns:
+      - name: dbt_scd_id
+        description: "Unique salary history version ID"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: salary_id
+        description: "Salary business key"
+
+      - name: employee_id
+        description: "Employee business key"
+
+      - name: effective_date
+        description: "Salary effective date"
+
+      - name: base_salary
+        description: "Historical base salary"
+
+      - name: bonus
+        description: "Historical bonus"
+
+      - name: total_compensation
+        description: "Historical total compensation"
+
+      - name: currency
+        description: "Compensation currency"
+
+      - name: updated_at
+        description: "Source modification timestamp"
+
+      - name: row_hash
+        description: "Salary business attribute hash"
+
+      - name: dbt_valid_from
+        description: "Salary version validity start"
+
+      - name: dbt_valid_to
+        description: "Salary version validity end"

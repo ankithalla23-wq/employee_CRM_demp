@@ -1,0 +1,50 @@
+version: 2
+
+snapshots:
+  - name: snap_employees
+    description: "SCD Type 2 history of employee attributes"
+    columns:
+      - name: dbt_scd_id
+        description: "Unique identifier of employee history version"
+        data_tests:
+          - unique
+          - not_null
+
+      - name: employee_id
+        description: "Employee business key"
+
+      - name: first_name
+        description: "Historical employee first name"
+
+      - name: last_name
+        description: "Historical employee surname"
+
+      - name: full_name
+        description: "Historical employee full name"
+
+      - name: email
+        description: "Historical employee email"
+
+      - name: department_id
+        description: "Department at the captured version"
+
+      - name: job_id
+        description: "Job at the captured version"
+
+      - name: hire_date
+        description: "Employee hire date"
+
+      - name: employment_status
+        description: "Employment status at capture"
+
+      - name: updated_at
+        description: "Source modification timestamp"
+
+      - name: row_hash
+        description: "Business attribute hash"
+
+      - name: dbt_valid_from
+        description: "Snapshot version validity start"
+
+      - name: dbt_valid_to
+        description: "Snapshot version validity end"
